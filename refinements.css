@@ -1,0 +1,77 @@
+/* Original logo artwork, including its own background and optical spacing. */
+.header .brand { padding:0; background:none; border-radius:0; }
+.header .brand img { display:block; width:100%; height:auto; }
+.icon-arrow { display:block; width:20px; height:20px; flex:0 0 20px; fill:none; stroke:currentColor; stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round; }
+.benefit-link { gap:12px; line-height:1.5; padding-bottom:7px; }
+.benefit-link .icon-arrow { width:20px; height:20px; flex:0 0 20px; stroke-width:1.9; }
+.benefit-card:focus-visible .benefit-link .icon-arrow { transform:translate(2px,-2px); }
+
+/* Slow continuous rotation; scrolling adds one smoothly scrubbed revolution. */
+.hero-scroll-track { position:relative; background:#fff; }
+.has-scroll-scene .hero { position:sticky; top:var(--pin-top,0px); box-shadow:0 -130px 0 var(--prisma-navy); }
+.prism-scene { mix-blend-mode:normal; mask-image:radial-gradient(ellipse 65% 70% at 50% 47%,#000 50%,transparent 85%),linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent),linear-gradient(0deg,transparent,#000 15%,#000 85%,transparent); mask-composite:intersect; }
+.hero-stage .scene-orbit { opacity:.25; }
+#prisma-canvas,.prism-static { position:absolute; inset:0; width:100%; height:100%; display:block; }
+#prisma-canvas { opacity:0; transition:opacity .5s; }
+.prism-static { object-fit:contain; transition:opacity .5s; }
+.scene-ready #prisma-canvas { opacity:1; }
+.scene-ready .prism-static { opacity:0; }
+@media(min-width:1051px) { .hero-inner { min-height:max(735px,calc(100svh - 125px)); } }
+
+/* An illuminated three-part price comparison, built around the actual values. */
+.pricing { position:relative; isolation:isolate; max-width:none; overflow:hidden; padding:110px 6% 80px; border:0; background:radial-gradient(ellipse at 50% 3%,#064c8138,transparent 60%),#030e1d; }
+.pricing:before { content:''; position:absolute; top:0; left:16%; right:16%; height:1px; background:linear-gradient(90deg,transparent,#45caff90,transparent); }
+.pricing:after { content:''; position:absolute; width:1000px; height:800px; top:180px; left:50%; transform:translateX(-50%); border-radius:50%; background:radial-gradient(ellipse,#0875ff19,transparent 65%); pointer-events:none; z-index:-1; }
+.pricing-inner { max-width:1280px; margin:auto; }
+.pricing .section-heading { margin-bottom:60px; max-width:900px; }
+.pricing .eyebrow { font:600 14px/1.5 Oswald,sans-serif; letter-spacing:4px; color:#65d9ff; margin-bottom:17px; }
+.pricing h2 { font:600 clamp(36px,3.7vw,53px)/1.2 Oswald,sans-serif; text-transform:uppercase; letter-spacing:-.3px; }
+.pricing h2 span { color:#57d1ff; }
+.pricing .section-heading > p:last-child { max-width:620px; font-size:15px; line-height:1.8; color:#acbfd5; margin-top:22px; }
+.price-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; align-items:stretch; }
+.price-card { --plan-accent:#7dd7ff; --light-x:50%; --light-y:0%; position:relative; isolation:isolate; padding:33px 30px 30px; border:1px solid #30536c; border-radius:20px; background:linear-gradient(155deg,#10293e,#091a2c 48%,#071422); overflow:hidden; min-width:0; box-shadow:0 15px 45px #0002,inset 0 1px 0 #b4eaff16; transition:border-color .3s,box-shadow .3s,transform .3s; }
+.price-card:nth-child(2) { --plan-accent:#92c8ff; background:linear-gradient(155deg,#122d4e,#0c1b33 48%,#08172a); }
+.price-card.featured { --plan-accent:#56d5ff; border-color:#2988b6; background:linear-gradient(155deg,#123e59,#08263e 48%,#071a2d); box-shadow:0 12px 60px #0089ff10,inset 0 1px 0 #9dedff3b; }
+.plan-light { position:absolute; inset:0; z-index:-1; pointer-events:none; background:radial-gradient(ellipse at 90% -10%,#52caff25,transparent 55%); }
+.plan-light:after { content:''; position:absolute; inset:0; background:radial-gradient(320px circle at var(--light-x) var(--light-y),#65dcff22,transparent 72%); opacity:0; transition:opacity .4s; }
+.plan-edge { position:absolute; left:20%; right:20%; height:1px; top:0; background:linear-gradient(90deg,transparent,var(--plan-accent),transparent); box-shadow:0 0 20px 2px #44cfff4d; transition:left .4s,right .4s; }
+.price-card:hover,.price-card:focus-within { border-color:#52c8f3; box-shadow:0 22px 60px #0004,0 0 30px #24b7ff12,inset 0 1px 0 #b4eaff35; }
+.js .price-card.reveal.visible:hover { transform:translateY(-6px); }
+.price-card:hover .plan-light:after,.price-card:focus-within .plan-light:after { opacity:1; }
+.price-card:hover .plan-edge,.price-card:focus-within .plan-edge { left:5%; right:5%; }
+.plan-top { display:flex; align-items:center; gap:13px; min-height:44px; position:relative; }
+.plan-symbol { width:44px; height:44px; flex-shrink:0; display:grid; place-items:center; border:1px solid #6bcfff3a; border-radius:12px; color:var(--plan-accent); background:linear-gradient(135deg,#81d9ff19,#81d9ff03); box-shadow:inset 0 1px 0 #ccefff16; }
+.plan-symbol svg { width:26px; height:26px; fill:none; stroke:currentColor; stroke-width:1.55; stroke-linecap:round; stroke-linejoin:round; }
+.plan-index { font:600 10px/1.4 Manrope,sans-serif; letter-spacing:1.4px; color:#abc4d9; }
+.plan-badge { position:absolute; top:-34px; right:-8px; padding:7px 11px; border-radius:0 0 7px 7px; background:#64d7ff; color:#041d32; font:800 8px/1.4 Manrope,sans-serif; letter-spacing:1px; box-shadow:0 3px 20px #17b9ff25; }
+.price-card h3 { font:600 clamp(22px,2vw,29px)/1.25 Oswald,sans-serif; text-transform:uppercase; letter-spacing:0; margin:25px 0 12px; min-height:2.5em; }
+.price-card > .plan-description { font-size:14px; line-height:1.75; color:#b9cadd; min-height:3.5em; max-width:310px; margin:0; }
+.plan-investment { margin-top:28px; }
+.price-card .initial { font-size:9px; font-weight:600; letter-spacing:1.5px; color:#a0bbd1; }
+.price-card .price { display:flex; align-items:baseline; gap:9px; margin:8px 0 0; font-family:Oswald,sans-serif; line-height:1.05; letter-spacing:-1px; color:#f6fbff; }
+.price-card .price small { font:500 24px/1 Manrope,sans-serif; letter-spacing:-1px; color:#c1d6e6; }
+.price-card .price strong { font:600 79px/1.05 Oswald,sans-serif; letter-spacing:-1.4px; }
+.monthly { display:flex; align-items:center; gap:9px; border:1px solid #639fc333; border-radius:9px; background:#071b2b88; margin-top:20px; padding:11px 12px; color:#e3f4ff; }
+.monthly-dot { width:5px; height:5px; border-radius:50%; background:var(--plan-accent); box-shadow:0 0 10px #4ccfff80; flex-shrink:0; }
+.monthly strong { font-size:15px; font-weight:700; white-space:nowrap; }
+.monthly strong span { font-size:12px; font-weight:500; color:#a8c1d6; }
+.monthly .monthly-label { font-size:9px; color:#a1bdd2; margin-left:auto; }
+.price-card ul { display:flex; flex-direction:column; gap:14px; margin:28px 0 32px; }
+.price-card li { display:flex; align-items:flex-start; gap:9px; padding:0; font-size:12px; line-height:1.65; color:#d2dfed; }
+.price-card li:before { content:none; }
+.price-card li svg { width:18px; height:18px; margin-top:1px; flex-shrink:0; fill:none; stroke:var(--plan-accent); stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; border:1px solid #72c7f12b; border-radius:50%; background:#4ac6ff0b; }
+.plan-button { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 12px 10px 18px; min-height:54px; border:1px solid #64c4ef6b; border-radius:11px; color:#e1f4ff; background:#092740; font-size:12px; font-weight:700; line-height:1.5; transition:background .25s,color .25s,border-color .25s,box-shadow .25s; }
+.plan-arrow { width:30px; height:30px; display:grid; place-items:center; border-radius:7px; background:#89ddff12; flex-shrink:0; }
+.plan-button .icon-arrow { width:18px; height:18px; transition:transform .25s; }
+.plan-button:hover,.plan-button:focus-visible { background:#d0f1ff; border-color:#d0f1ff; color:#08263c; box-shadow:0 4px 28px #28baff20; }
+.plan-button:hover .icon-arrow,.plan-button:focus-visible .icon-arrow { transform:translate(2px,-2px); }
+.featured .plan-button { background:#55d2ff; color:#062438; border-color:#55d2ff; box-shadow:0 4px 22px #0aafff18; }
+.featured .plan-arrow { background:#06243813; }
+.featured .plan-button:hover,.featured .plan-button:focus-visible { background:#b3edff; border-color:#b3edff; }
+.plan-facet { position:absolute; right:-47px; bottom:92px; width:180px; height:180px; fill:none; stroke:var(--plan-accent); stroke-width:.65; opacity:.07; z-index:-1; transform:rotate(13deg); transition:opacity .4s,transform .6s; pointer-events:none; }
+.price-card:hover .plan-facet,.price-card:focus-within .plan-facet { opacity:.17; transform:rotate(4deg) translateY(-8px); }
+.pricing-note { color:#9ab1c8; font-size:12px; line-height:1.8; max-width:700px; margin:30px auto 0; }
+@media(max-width:1100px) and (min-width:761px) { .price-grid { gap:15px; } .price-card { padding:29px 20px 24px; } .price-card h3 { font-size:24px; min-height:2.5em; } .price-card > .plan-description { min-height:5.25em; } .price-card .price strong { font-size:70px; } .monthly { flex-wrap:wrap; gap:7px; padding:10px; } .monthly .monthly-label { display:none; } .plan-button { padding-left:12px; font-size:11px; gap:8px; } .plan-badge { top:-30px; right:-7px; } }
+@media(max-width:760px) { .pricing { padding:75px 6% 60px; } .pricing .section-heading { margin-bottom:38px; } .pricing .eyebrow { font-size:12px; letter-spacing:3px; } .pricing h2 { font-size:clamp(33px,8vw,44px); } .pricing .section-heading > p:last-child { font-size:14px; } .price-grid { grid-template-columns:1fr; gap:22px; max-width:480px; margin:auto; } .price-card { padding:30px 26px; } .price-card h3 { font-size:28px; min-height:0; margin-top:23px; } .price-card > .plan-description { min-height:0; } .plan-badge { top:-31px; right:-3px; } .plan-investment { margin-top:26px; } .price-card .price strong { font-size:78px; } .price-card li { font-size:13px; } .price-card ul { margin-top:25px; } .plan-button { font-size:12px; } .monthly .monthly-label { font-size:9px; } .pricing-note { font-size:11px; } }
+@media(max-width:370px) { .price-card { padding:28px 20px; } .monthly .monthly-label { display:none; } .plan-badge { top:-29px; } .plan-button { font-size:11px; padding-left:12px; } }
+@media(prefers-reduced-motion:reduce) { .js .price-card.reveal.visible:hover { transform:none; } .plan-facet { transform:none; } }
