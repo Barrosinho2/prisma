@@ -5,7 +5,6 @@
   const root = document.documentElement;
   const bg = hero.querySelector('.aurora-bg');
   const canvas = hero.querySelector('#aurora-canvas');
-  const toggle = hero.querySelector('.aurora-toggle');
   const showcase = hero.querySelector('.aurora-showcase');
   const tiltEl = hero.querySelector('.showcase-tilt');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
@@ -174,12 +173,8 @@ void main(){
   }
   function request() { if (!raf && !paused && visible && !document.hidden) raf = requestAnimationFrame(frame); }
   function stop() { cancelAnimationFrame(raf); raf = 0; last = 0; }
-  function updateToggle() {
-    hero.classList.toggle('is-paused', paused);
-    if (!toggle) return;
-    toggle.setAttribute('aria-pressed', String(paused));
-    toggle.querySelector('.aurora-toggle-label').textContent = paused ? 'Ativar animação' : 'Pausar animação';
-  }
+  // Motion follows the system "reduce motion" setting.
+  function updatePaused() { hero.classList.toggle('is-paused', paused); }
 
   hero.addEventListener('pointermove', event => {
     if (event.pointerType === 'touch') return;
@@ -203,8 +198,7 @@ void main(){
     button.style.setProperty('--mx', `${event.clientX - r.left}px`);
     button.style.setProperty('--my', `${event.clientY - r.top}px`);
   }));
-  toggle?.addEventListener('click', () => { paused = !paused; updateToggle(); if (paused) stop(); else request(); });
-  reduce.addEventListener('change', () => { paused = reduce.matches; updateToggle(); if (paused) { stop(); tilt.x = tilt.y = tilt.l = 0; applyTilt(); } else request(); });
+  reduce.addEventListener('change', () => { paused = reduce.matches; updatePaused(); if (paused) { stop(); tilt.x = tilt.y = tilt.l = 0; applyTilt(); } else request(); });
   document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); else request(); });
   if ('IntersectionObserver' in window) new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; if (visible) request(); else stop(); }).observe(hero);
   canvas.addEventListener('webglcontextlost', event => { event.preventDefault(); hero.classList.remove('aurora-live'); gl = null; });
@@ -212,6 +206,6 @@ void main(){
   if ('ResizeObserver' in window) new ResizeObserver(resize).observe(bg); else addEventListener('resize', resize);
 
   if (setupGL()) { hero.classList.add('aurora-live'); resize(); }
-  updateToggle();
+  updatePaused();
   request();
 })();

@@ -1,6 +1,6 @@
 /* Hero Prisma: aurora de luz que reage ao cursor, título central e vitrine de interface. */
 body:before { background:#02040d; }
-.aurora-hero { --floor:clamp(130px,15vw,240px); --hero-top:125px; position:relative; isolation:isolate; margin-top:calc(var(--hero-top) * -1); padding:calc(var(--hero-top) + 84px) 5% clamp(40px,7vw,120px); background:#fff; overflow:hidden; color:#fff; text-align:center; }
+.aurora-hero { --floor:clamp(130px,15vw,240px); --hero-top:92px; position:relative; isolation:isolate; margin-top:calc(var(--hero-top) * -1); padding:calc(var(--hero-top) + 104px) 5% clamp(40px,7vw,120px); background:#fff; overflow:hidden; color:#fff; text-align:center; }
 
 /* Background */
 .aurora-bg { position:absolute; inset:0 0 var(--floor); z-index:-1; overflow:hidden; border-radius:0 0 clamp(26px,3.4vw,54px) clamp(26px,3.4vw,54px);
@@ -13,17 +13,13 @@ body:before { background:#02040d; }
 
 /* Copy */
 .aurora-content { position:relative; z-index:2; max-width:1000px; margin:0 auto; }
-.aurora-badge { display:inline-flex; align-items:center; gap:12px; margin:0 0 30px; padding:6px 6px 6px 16px; border-radius:999px; background:#ffffffeb; color:#0b1430; font:700 12px/1 Manrope,sans-serif; letter-spacing:.2px; box-shadow:0 10px 30px #00000059,0 0 0 1px #ffffff4d; transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s; }
-.aurora-badge:hover { transform:translateY(-2px); box-shadow:0 14px 34px #0000006b,0 0 0 1px #ffffff,0 0 30px #4d7dff55; }
-.aurora-badge-dot { width:7px; height:7px; border-radius:50%; background:#1f6bff; box-shadow:0 0 0 4px #1f6bff26; }
-.aurora-badge b { padding:8px 12px; border-radius:999px; background:#050a1c; color:#fff; font:600 11px/1 Oswald,sans-serif; letter-spacing:1.4px; text-transform:uppercase; }
-.aurora-hero h1 { margin:0; font:600 clamp(50px,6.6vw,104px)/.98 Oswald,sans-serif; letter-spacing:-.5px; text-transform:uppercase; color:#fff; text-shadow:0 12px 60px #01030d99; }
+.aurora-hero h1 { margin:0; font:600 clamp(48px,5.5vw,88px)/1 Oswald,sans-serif; text-wrap:balance; letter-spacing:-.5px; text-transform:uppercase; color:#fff; text-shadow:0 12px 60px #01030d99; }
 .aurora-hero h1 .line { display:block; color:#fff; }
 .aurora-hero h1 em { font-style:normal; text-shadow:none; background:linear-gradient(100deg,#9be6ff 0%,#4f86ff 34%,#2fb8ff 66%,#9be6ff 100%); background-size:220% 100%; -webkit-background-clip:text; background-clip:text; color:transparent; animation:aurora-shine 10s linear infinite; }
 @keyframes aurora-shine { to { background-position:-220% 0; } }
-.aurora-lead { max-width:640px; margin:26px auto 0; font-size:18px; line-height:1.7; color:#c9d4ee; }
+.aurora-lead { max-width:620px; margin:28px auto 0; text-wrap:balance; font-size:18px; line-height:1.7; color:#c9d4ee; }
 .aurora-actions { display:flex; justify-content:center; flex-wrap:wrap; gap:14px; margin-top:36px; }
-.aurora-price { margin-top:24px; font-size:11px; letter-spacing:1.6px; text-transform:uppercase; color:#9fb0d6; }
+.aurora-price { margin-top:26px; font-size:11px; letter-spacing:1.6px; text-transform:uppercase; color:#9fb0d6; }
 .aurora-price strong { color:#fff; font-size:14px; letter-spacing:.2px; margin:0 3px; }
 .aurora-price span { text-transform:none; letter-spacing:0; font-size:12px; color:#c3d0ea; }
 
@@ -39,11 +35,6 @@ body:before { background:#02040d; }
 .ghost-button:hover,.ghost-button:focus-visible { transform:translateY(-3px); background-color:#e6eeff; box-shadow:0 16px 36px -10px #000a,0 0 36px -8px #9fc0ff; }
 .glow-button .icon-arrow,.ghost-button .icon-arrow { width:18px; height:18px; flex-basis:18px; transition:transform .45s cubic-bezier(.2,.8,.2,1); }
 .glow-button:hover .icon-arrow,.ghost-button:hover .icon-arrow,.glow-button:focus-visible .icon-arrow,.ghost-button:focus-visible .icon-arrow { transform:translate(3px,-3px); }
-.aurora-toggle { display:inline-flex; align-items:center; gap:9px; margin-top:18px; padding:8px 14px; border:1px solid #ffffff24; border-radius:999px; background:#ffffff0d; color:#b9c7e6; font-size:11px; transition:background .3s,color .3s,border-color .3s; }
-.aurora-toggle:hover { background:#ffffff1f; color:#fff; border-color:#ffffff4d; }
-.aurora-toggle-icon { width:7px; height:9px; border-left:2px solid currentColor; border-right:2px solid currentColor; }
-.aurora-toggle[aria-pressed="true"] .aurora-toggle-icon { width:0; height:0; border:0; border-top:5px solid transparent; border-bottom:5px solid transparent; border-left:8px solid currentColor; }
-html:not(.aurora-js) .aurora-toggle { display:none; }
 
 /* Showcase */
 .aurora-showcase { position:relative; z-index:2; width:min(1120px,100%); margin:clamp(50px,6vw,84px) auto 0; perspective:1800px; }
@@ -142,11 +133,9 @@ html:not(.aurora-js) .aurora-toggle { display:none; }
 .hero-entered .aurora-hero [data-enter],.hero-entered .aurora-hero .aurora-showcase[data-enter] { opacity:1; transform:none; filter:none; }
 .aurora-hero.is-paused *,.aurora-hero.is-paused *:before,.aurora-hero.is-paused *:after { animation-play-state:paused !important; }
 
-@media(max-width:1050px) { .aurora-hero { --hero-top:124px; padding-top:calc(var(--hero-top) + 64px); } .aurora-lead { font-size:16px; } }
+@media(max-width:1050px) { .aurora-hero { padding-top:calc(var(--hero-top) + 84px); } .aurora-lead { font-size:16px; } }
 @media(max-width:760px) {
-  .aurora-hero { --hero-top:92px; --floor:clamp(80px,22vw,130px); padding:calc(var(--hero-top) + 46px) 5% 24px; }
-  .aurora-badge { gap:8px; margin-bottom:24px; padding-left:12px; font-size:11px; }
-  .aurora-badge b { padding:7px 9px; font-size:9.5px; letter-spacing:1px; }
+  .aurora-hero { --hero-top:74px; --floor:clamp(80px,22vw,130px); padding:calc(var(--hero-top) + 58px) 5% 24px; }
   .aurora-hero h1 { font-size:clamp(42px,12.6vw,66px); line-height:1; }
   .aurora-lead { margin-top:20px; font-size:15px; line-height:1.75; }
   .aurora-actions { flex-direction:column; align-items:stretch; max-width:340px; margin:30px auto 0; }
@@ -156,7 +145,6 @@ html:not(.aurora-js) .aurora-toggle { display:none; }
   .showcase-tilt { transform:translateY(var(--lift)) rotateX(calc(6deg + var(--rx))) rotateY(var(--ry)); }
   .aurora-floor span { font-size:34vw; }
 }
-@media(max-width:370px) { .aurora-badge-dot { display:none; } .aurora-badge { font-size:10px; } }
 @media(prefers-reduced-motion:reduce) { .aurora-hero h1 em { animation:none; } .showcase-tilt { will-change:auto; } }
 
 /* Devices: notebook and phone frames reused across the site */
